@@ -1,0 +1,79 @@
+#include "stdafx.h"
+int main(){
+int i,j,k,z=0,h=0,t1[19],t2[19],t3[19],f=0,p=0,v=0,q,c=1,n=20,b=0;
+double km,kn;
+int x[34]={1,1,1,1,2,2,2,2,3,3,3,4,4,4,5,5,6,6,6,7,7,8,9,10,11,12,14,15,16,17,18,19,20,20};
+int y[34]={3,4,5,6,5,6,7,8,13,14,15,12,13,16,11,12,11,20,10,10,9,9,19,18,16,18,17,0,0,0,0,0,0,16};
+int A[21][21]={0},A2[21][21],A3[21][21],D[21][210]={0};
+printf("C matrici i syun@ nerkayacvac toxov\n");
+for(i=0;i<34;i++)
+	printf("%2d ",x[i]);
+printf("\nC matrici j syun@ nerkayacvac toxov\n");
+for(i=0;i<34;i++)
+	printf("%2d ",y[i]);
+printf("\nGtnenq bolor miacumneri erkarutyunner@ hashvenq n@\n");
+for(i=0;i<34;i++){
+	q=y[i];
+for(k=0;k<34;k++){
+for(j=0;j<34;j++){
+	if(x[j]==q){
+		c++;q=y[j];}}}
+printf("%d ",c);
+if(c>b)b=c;c=1;}
+printf("\nn=%d",b);
+printf("\nT1 zangvac\n");
+for(i=1;i<21;i++){
+for(j=0;j<34;j++){
+   if(i==y[j])z=1;}
+if(z!=1){ t1[h]=i;
+	printf("%d ",t1[h]);h++;z=0;}}
+printf("\nT2 zangvac\n");
+for(i=1;i<21;i++){
+for(j=0;j<34;j++){
+	if(i==y[j] && p==0 && i!=13 && i!=15 && i!=16 && i!=17 && i!=18 && i!=19){
+	   t2[f]=i;printf("%d ",t2[f]);f++;p=1;
+   }}p=0;}
+printf("\nT3 zangvac\n");
+for(j=0;j<34;j++)
+	if(y[j]==0){
+		t3[v]=x[j]; printf("%d ",t3[v]);v++;}
+km = f /(double)n;
+printf("\nKm=%f",km);
+kn = 9 /(double)34;
+printf("\nKn=%lf",kn);
+printf("\nA matric\n");
+for(j=0;j<34;j++)
+	A[x[j]][y[j]]=1;
+for(i=1;i<21;i++){
+for(j=1;j<21;j++){
+	printf("%d ",A[i][j]);}
+printf("\n");}
+printf("A^2 matric\n");
+for(i=1; i < 21; i++){
+ for(j=1; j < 21; j++){
+ A2[i][j]=0;
+ for(k=1;k<21;k++)
+ A2[i][j]+=A[i][k]*A[k][j];
+ printf("%d ",A2[i][j]);}
+ printf("\n");}
+printf("A^3 matric\n");
+for(i=1; i < 21; i++){
+ for(j=1; j < 21; j++){
+ A3[i][j]=0;
+ for(k=1;k<21;k++)
+ A3[i][j]+=A2[i][k]*A[k][j];
+ printf("%d ",A3[i][j]);}
+ printf("\n");}
+printf("Delta matric\n");
+for(i=1; i < 21; i++){
+ for(j=1; j < 21; j++){
+ D[i][j]=A[i][j]+A2[i][j]+A3[i][j];
+ printf("%d ",D[i][j]);}
+ printf("\n");}b=0;
+for(i=1; i < 21; i++)
+	 if(D[i][i]!=0)b=D[i][i];
+if(b==24)
+	printf("Delta matrici ankyunagci vra ka %d arjeq parunakox tar\n",b);
+else printf("Delta matrici ankyunagci bolor tarer@ 0en\n");
+return 0;
+}
